@@ -159,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: [
                                 SizedBox(
                                   height: 400,
-                                  child: ListView.builder(
+                                  child: ListView.separated(
                                     itemCount: timingSlotsResponse == null
                                         ? 0
                                         : timingSlotsResponse!.response!
@@ -181,7 +181,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   fontWeight: FontWeight.w600),
                                             ),
                                           ));
-                                    },
+                                    }, separatorBuilder: (BuildContext context, int index) {
+                                      return Container(
+                                        color: Colors.white,
+                                        height: 0.8,
+                                      );
+                                  },
                                   ),
                                 )
                               ],
@@ -225,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: [
                                 SizedBox(
                                   height: 400,
-                                  child: ListView.builder(
+                                  child: ListView.separated(
                                     itemCount: timingSlotsResponse == null
                                         ? 0
                                         : timingSlotsResponse!.response!
@@ -247,7 +252,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   fontWeight: FontWeight.w600),
                                             ),
                                           ));
-                                    },
+                                    }, separatorBuilder: (BuildContext context, int index) {
+                                      return Container(
+                                        color: Colors.white,
+                                        height: 0.8,
+                                      );
+                                  },
                                   ),
                                 )
                               ],
@@ -291,7 +301,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: [
                                 SizedBox(
                                   height: 400,
-                                  child: ListView.builder(
+                                  child: ListView.separated(
                                     itemCount: timingSlotsResponse == null
                                         ? 0
                                         : timingSlotsResponse!.response!
@@ -315,7 +325,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   fontWeight: FontWeight.w600),
                                             ),
                                           ));
-                                    },
+                                    }, separatorBuilder: (BuildContext context, int index) {
+                                      return Container(
+                                        color: Colors.white,
+                                        height : 0.8,
+                                      );
+                                  },
                                   ),
                                 )
                               ],
@@ -359,7 +374,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: [
                                 SizedBox(
                                   height: 400,
-                                  child: ListView.builder(
+                                  child: ListView.separated(
                                     itemCount: timingSlotsResponse == null
                                         ? 0
                                         : timingSlotsResponse!.response!.length,
@@ -379,7 +394,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   fontWeight: FontWeight.w600),
                                             ),
                                           ));
-                                    },
+                                    }, separatorBuilder: (BuildContext context, int index) {
+                                      return Container(
+                                        color: Colors.white,
+                                        height: 0.8,
+                                      );
+                                  },
                                   ),
                                 ),
                               ],
