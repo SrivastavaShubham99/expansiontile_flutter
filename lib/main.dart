@@ -158,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               },
                               children: [
                                 SizedBox(
-                                  height: 600,
+                                  height: 400,
                                   child: ListView.builder(
                                     itemCount: timingSlotsResponse == null
                                         ? 0
@@ -169,8 +169,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return Container(
-                                          margin:
-                                              const EdgeInsets.only(left: 16),
+                                          color: timingSlotsResponse!.response!.sublist(0, 24)[index].status==1 ?
+                                          Colors.green[200] : Colors.red[200],
                                           alignment: Alignment.centerLeft,
                                           child: ListTile(
                                             title: Text(
@@ -197,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           fontSize: 18)),
                                   const Spacer(),
                                   Text(
-                                      "${getSlotsAvailableCount(timingSlotsResponse!.response!.sublist(24, 40))} Slots available",
+                                      "${getSlotsAvailableCount(timingSlotsResponse!.response!.sublist(24, 36))} Slots available",
                                       style: const TextStyle(
                                           fontWeight: FontWeight.w600,
                                           color: Colors.redAccent,
@@ -224,7 +224,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               },
                               children: [
                                 SizedBox(
-                                  height: 600,
+                                  height: 400,
                                   child: ListView.builder(
                                     itemCount: timingSlotsResponse == null
                                         ? 0
@@ -235,8 +235,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return Container(
-                                          margin:
-                                              const EdgeInsets.only(left: 16),
+                                        color: timingSlotsResponse!.response!.sublist(24, 36)[index].status==1 ?
+                                        Colors.green[200] : Colors.red[200],
                                           alignment: Alignment.centerLeft,
                                           child: ListTile(
                                             title: Text(
@@ -290,7 +290,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               },
                               children: [
                                 SizedBox(
-                                  height: 600,
+                                  height: 400,
                                   child: ListView.builder(
                                     itemCount: timingSlotsResponse == null
                                         ? 0
@@ -303,8 +303,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return Container(
-                                          margin:
-                                              const EdgeInsets.only(left: 16),
+                                         color: timingSlotsResponse!.response!.sublist(36,49)[index].status==1 ?
+                                         Colors.green[200] : Colors.red[200],
                                           alignment: Alignment.centerLeft,
                                           child: ListTile(
                                             title: Text(
@@ -319,7 +319,71 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                 )
                               ],
-                            )
+                            ),
+                            ExpansionTile(
+                              title: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  const Text("All",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18)),
+                                  const Spacer(),
+                                  Text(
+                                      "${getSlotsAvailableCount(timingSlotsResponse!.response!)} Slots available",
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.redAccent,
+                                          fontSize: 14))
+                                ],
+                              ),
+                              trailing: expansionIconManager3
+                                  ? const Icon(
+                                  Icons.keyboard_arrow_down_rounded,
+                                  color: Colors.red)
+                                  : const Icon(Icons.keyboard_arrow_up_outlined,
+                                  color: Colors.red),
+                              leading: const CircleAvatar(
+                                radius: 21,
+                                backgroundColor: Colors.orangeAccent,
+                                child: Image(
+                                  image: AssetImage(Images.evening_slots),
+                                ),
+                              ),
+                              onExpansionChanged: (val) {
+                                setState(() {
+                                  expansionIconManager3 = val;
+                                });
+                              },
+                              children: [
+                                SizedBox(
+                                  height: 400,
+                                  child: ListView.builder(
+                                    itemCount: timingSlotsResponse == null
+                                        ? 0
+                                        : timingSlotsResponse!.response!.length,
+                                    shrinkWrap: true,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Container(
+                                          color: timingSlotsResponse!.response![index].status==1 ?
+                                          Colors.green[200] : Colors.red[200],
+                                          alignment: Alignment.centerLeft,
+                                          child: ListTile(
+                                            title: Text(
+                                              "${timingSlotsResponse!.response![index].slotStartTime} AM - "
+                                                  "${timingSlotsResponse!.response![index].slotEndTime} AM",
+                                              style: const TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ));
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         )
                       : Container();
